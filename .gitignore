@@ -4,3 +4,4 @@ node_modules
 src/**/*.d.ts
 .idea
 .DS_Store
+index.d.ts

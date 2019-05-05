@@ -1,0 +1,46 @@
+{
+  "name": "alexa-smart-home-sdk",
+  "version": "0.0.1",
+  "description": "Alexa Smart Home SDK",
+  "main": "index.js",
+  "scripts": {
+    "generateInterfaces": "json2ts ./schema/alexa_smart_home_message_schema.json > typings/AlexaSmartHomeAPI.ts --style.singleQuote --no-style.semi",
+    "generateMessages": "json-ts $FILE_PATH --prefix '' --rootName $FILE_NAME | tee $OUTPUT_FILE_NAME",
+    "getSchema": "curl https://raw.githubusercontent.com/alexa/alexa-smarthome/master/validation_schemas/alexa_smart_home_message_schema.json -o ./schema/alexa_smart_home_message_schema.json",
+    "build": "rm -f archive.zip && tsc && zip -r -X archive.zip ./src ./package.json ./index.js ./node_modules",
+    "tslint-fix": "tslint --fix --project .",
+    "tslint": "tslint --project ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sskorol/alexa-smart-home-sdk.git"
+  },
+  "keywords": [
+    "alexa",
+    "smart home"
+  ],
+  "author": "Sergey Korol",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/sskorol/alexa-smart-home-sdk/issues"
+  },
+  "homepage": "https://github.com/sskorol/alexa-smart-home-sdk#readme",
+  "devDependencies": {
+    "json-schema-to-typescript": "^6.1.3",
+    "json-ts": "^1.6.4",
+    "prettier": "^1.17.0",
+    "source-map-support": "^0.5.12",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.4.5",
+    "uuid": "^3.3.2"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "dotenv": "^7.0.0",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.25"
+  }
+}

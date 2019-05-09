@@ -1,5 +1,5 @@
 declare namespace Alexa.StateReport {
-  export interface StateReport {
+  export interface Response {
     context: Context
     event: Event
   }

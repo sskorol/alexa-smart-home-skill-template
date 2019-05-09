@@ -1,5 +1,5 @@
 import * as uuid4 from 'uuid/v4'
-import { Middleware } from '../middleware/Middleware'
+import { MiddlewareService } from '../middleware/MiddlewareService'
 import Request = Alexa.Request
 import { ErrorType } from '../model/ErrorType'
 import { HeaderName } from '../model/HeaderName'
@@ -11,13 +11,13 @@ import { RequestHandler } from './RequestHandler'
 const logger: Logger = createLogger('SmartHomeSkillBuilder')
 
 export class SmartHomeSkillBuilder {
-  public static prepare(middleware?: Middleware): SmartHomeSkillBuilder {
+  public static prepare(middleware?: MiddlewareService): SmartHomeSkillBuilder {
     return new SmartHomeSkillBuilder(middleware)
   }
 
-  private readonly handlers: Array<new (middleware?: Middleware) => RequestHandler> = []
+  private readonly handlers: Array<new (middleware?: MiddlewareService) => RequestHandler> = []
 
-  constructor(private readonly middleware?: Middleware) {}
+  constructor(private readonly middleware?: MiddlewareService) {}
 
   public requestHandlers<T extends RequestHandler>(
     ...handlers: Array<new () => RequestHandler>

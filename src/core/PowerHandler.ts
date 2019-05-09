@@ -2,18 +2,18 @@ import Request = Alexa.Request
 import Endpoint = Alexa.Endpoint
 import { AxiosResponse } from 'axios'
 import * as uuid4 from 'uuid/v4'
-import { Middleware } from '../middleware/Middleware'
-import PowerControllerResponse = Alexa.PowerControllerResponse.PowerControllerResponse
-import PropertiesItem = Alexa.Misc.PropertiesItem
+import { MiddlewareService } from '../middleware/MiddlewareService'
+import Response = Alexa.GenericController.Response
+import PropertiesItem = Alexa.REST.PropertiesItem
 import { HeaderName } from '../model/HeaderName'
 import { Interface } from '../model/Interface'
 import { payloadVersion } from './Constants'
 import { RequestHandler } from './RequestHandler'
 
 export class PowerHandler implements RequestHandler {
-  constructor(private readonly middleware?: Middleware) {}
+  constructor(private readonly middleware?: MiddlewareService) {}
 
-  public async handle(request: Request): Promise<PowerControllerResponse> {
+  public async handle(request: Request): Promise<Response> {
     const { correlationToken, name } = request.directive.header
     const device: Endpoint = request.directive.endpoint as Endpoint
     const state: boolean = name === HeaderName.TURN_ON

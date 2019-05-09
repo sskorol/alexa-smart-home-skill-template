@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios'
-import EndpointsItem = Alexa.DiscoveryResponse.EndpointsItem
+import EndpointsItem = Alexa.Discovery.EndpointsItem
 import PropertiesItem = Alexa.StateReport.PropertiesItem
 
 export interface MiddlewareService {

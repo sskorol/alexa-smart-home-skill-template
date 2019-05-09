@@ -1,18 +1,18 @@
 import { AxiosResponse } from 'axios'
 import * as uuid4 from 'uuid/v4'
 import Endpoint = Alexa.Endpoint
-import { Middleware } from '../middleware/Middleware'
+import { MiddlewareService } from '../middleware/MiddlewareService'
 import { HeaderName } from '../model/HeaderName'
 import { Interface } from '../model/Interface'
-import StateReport = Alexa.StateReport.StateReport
+import Response = Alexa.StateReport.Response
 import PropertiesItem = Alexa.StateReport.PropertiesItem
 import Request = Alexa.Request
 import { RequestHandler } from './RequestHandler'
 
 export class StateHandler implements RequestHandler {
-  constructor(private readonly middleware?: Middleware) {}
+  constructor(private readonly middleware?: MiddlewareService) {}
 
-  public async handle(request: Request): Promise<StateReport> {
+  public async handle(request: Request): Promise<Response> {
     const { directive } = request
     const { header, endpoint } = directive
 

@@ -1,17 +1,17 @@
 import { AxiosResponse } from 'axios'
 import * as uuid4 from 'uuid/v4'
+import { MiddlewareService } from '../middleware/MiddlewareService'
 import Request = Alexa.Request
-import { Middleware } from '../middleware/Middleware'
 import { HeaderName } from '../model/HeaderName'
 import { Interface } from '../model/Interface'
-import DiscoveryResponse = Alexa.DiscoveryResponse.DiscoveryResponse
-import EndpointsItem = Alexa.DiscoveryResponse.EndpointsItem
+import Response = Alexa.Discovery.Response
+import EndpointsItem = Alexa.Discovery.EndpointsItem
 import { RequestHandler } from './RequestHandler'
 
 export class DiscoveryHandler implements RequestHandler {
-  constructor(private readonly middleware?: Middleware) {}
+  constructor(private readonly middleware?: MiddlewareService) {}
 
-  public async handle(request: Request): Promise<DiscoveryResponse> {
+  public async handle(request: Request): Promise<Response> {
     const endpoints: EndpointsItem[] = []
 
     if (this.middleware) {

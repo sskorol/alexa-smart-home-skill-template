@@ -1,5 +1,5 @@
-declare namespace Alexa.AuthorizationAcceptGrantResponse {
-  export interface AuthorizationAcceptGrantResponse {
+declare namespace Alexa.AuthorizationAcceptGrant {
+  export interface Response {
     event: Event
   }
   export interface Event {

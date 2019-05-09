@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
 import * as https from 'https'
 import { createLogger, Logger } from '../utils/Logger'
-import EndpointsItem = Alexa.DiscoveryResponse.EndpointsItem
+import EndpointsItem = Alexa.Discovery.EndpointsItem
 import PropertiesItem = Alexa.StateReport.PropertiesItem
 import { MiddlewareService } from './MiddlewareService'
 

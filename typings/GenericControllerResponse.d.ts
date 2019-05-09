@@ -1,7 +1,7 @@
-declare namespace Alexa.PowerControllerResponse {
-  import PropertiesItem = Alexa.Misc.PropertiesItem
+declare namespace Alexa.GenericController {
+  import PropertiesItem = Alexa.REST.PropertiesItem
 
-  export interface PowerControllerResponse {
+  export interface Response {
     context: Context
     event: Event
   }

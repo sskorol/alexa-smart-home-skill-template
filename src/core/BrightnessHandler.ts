@@ -7,7 +7,6 @@ import PowerControllerResponse = Alexa.PowerControllerResponse.PowerControllerRe
 import PropertiesItem = Alexa.Misc.PropertiesItem
 import { HeaderName } from '../model/HeaderName'
 import { Interface } from '../model/Interface'
-import { getCommandFor } from '../utils/CommandMatcher'
 import { payloadVersion } from './Constants'
 import { RequestHandler } from './RequestHandler'
 import BrightnessRequestPayload = Alexa.Misc.BrightnessRequestPayload
@@ -26,7 +25,7 @@ export class BrightnessHandler implements RequestHandler {
     const properties: PropertiesItem[] = []
 
     if (this.middleware) {
-      await this.middleware.sendMessage(device.endpointId, [{ command: getCommandFor(name), state }])
+      await this.middleware.sendMessage(device.endpointId, [{ command: name, state }])
       const discoveryResponse: AxiosResponse<PropertiesItem[]> = await this.middleware.reportState(device.endpointId)
       properties.push(...discoveryResponse.data)
     }

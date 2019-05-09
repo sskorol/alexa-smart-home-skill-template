@@ -16,4 +16,10 @@ declare namespace Alexa.Misc {
     brightnessDelta?: number
     brightness?: number
   }
+
+  export interface SpeakerRequestPayload {
+    volume?: number
+    volumeDefault?: number
+    mute?: boolean
+  }
 }

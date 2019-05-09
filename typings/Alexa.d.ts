@@ -1,4 +1,4 @@
-declare namespace Alexa.Misc {
+declare namespace Alexa.REST {
   export interface PropertiesItem {
     namespace: string
     name: string

@@ -1,5 +1,5 @@
 declare namespace Alexa {
-  import BrightnessRequestPayload = Alexa.Misc.BrightnessRequestPayload
+  import BrightnessRequestPayload = Alexa.REST.BrightnessRequestPayload
 
   export interface Request {
     directive: Directive

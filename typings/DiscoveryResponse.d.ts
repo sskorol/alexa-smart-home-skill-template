@@ -1,5 +1,5 @@
-declare namespace Alexa.DiscoveryResponse {
-  export interface DiscoveryResponse {
+declare namespace Alexa.Discovery {
+  export interface Response {
     event: Event
   }
   export interface Event {

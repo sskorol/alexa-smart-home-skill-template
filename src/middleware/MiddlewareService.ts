@@ -1,11 +1,9 @@
 import { AxiosResponse } from 'axios'
-import EndpointsItem = Alexa.Discovery.EndpointsItem
-import PropertiesItem = Alexa.StateReport.PropertiesItem
+import PropertiesItem = Alexa.API.PropertiesItem
+import EndpointsItem = Alexa.API.EndpointsItem
 
 export interface MiddlewareService {
-  sendMessage(deviceId: string, message: any): Promise<AxiosResponse>
-
-  discoverDevices(message: any): Promise<AxiosResponse<EndpointsItem[]>>
+  sendMessage(deviceId: string, message: object): Promise<AxiosResponse<PropertiesItem[]>>
 
   getDevices(): Promise<AxiosResponse<EndpointsItem[]>>
 

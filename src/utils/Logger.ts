@@ -1,4 +1,5 @@
 import * as moment from 'moment-timezone'
+import { TIMEZONE } from '../core/Constants'
 
 export interface Logger {
   info(message: string, ...rest: any[]): void
@@ -11,7 +12,7 @@ export interface Logger {
 const log = (level: string, tag: string, message: string, ...rest: any[]) =>
   console[level].apply(console[level], [
     `[${moment()
-      .tz('Europe/Kiev')
+      .tz(TIMEZONE)
       .format()}] [${tag}] ${message}`,
     ...rest
   ])

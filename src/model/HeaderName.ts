@@ -8,6 +8,8 @@ export enum HeaderName {
   ADJUST_VOLUME = 'AdjustVolume',
   SET_VOLUME = 'SetVolume',
   SET_MUTE = 'SetMute',
+  CHANGE_CHANNEL = 'ChangeChannel',
+  SKIP_CHANNELS = 'SkipChannels',
   REPORT_STATE = 'ReportState',
   STATE_REPORT = 'StateReport',
   RESPONSE = 'Response',

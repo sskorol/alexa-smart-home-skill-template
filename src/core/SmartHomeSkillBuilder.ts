@@ -1,17 +1,18 @@
 import * as uuid4 from 'uuid/v4'
 import { MiddlewareService } from '../middleware/MiddlewareService'
-import Request = Alexa.Request
 import { ErrorType } from '../model/ErrorType'
 import { HeaderName } from '../model/HeaderName'
 import { Interface } from '../model/Interface'
 import { createLogger, Logger } from '../utils/Logger'
-import { payloadVersion } from './Constants'
+import { API_VERSION } from './Constants'
 import { RequestHandler } from './RequestHandler'
+import Request = Alexa.API.Request
+import Response = Alexa.API.Response
 
 const logger: Logger = createLogger('SmartHomeSkillBuilder')
 
 export class SmartHomeSkillBuilder {
-  public static prepare(middleware?: MiddlewareService): SmartHomeSkillBuilder {
+  public static with(middleware?: MiddlewareService): SmartHomeSkillBuilder {
     return new SmartHomeSkillBuilder(middleware)
   }
 
@@ -19,16 +20,16 @@ export class SmartHomeSkillBuilder {
 
   constructor(private readonly middleware?: MiddlewareService) {}
 
-  public requestHandlers<T extends RequestHandler>(
+  public withRequestHandlers<T extends RequestHandler>(
     ...handlers: Array<new () => RequestHandler>
   ): SmartHomeSkillBuilder {
     this.handlers.push(...handlers)
     return this
   }
 
-  public buildLambda(): (request: Request, context: object) => Promise<object> {
+  public buildLambdaResponse(): (request: Request, context: object) => Promise<Response> {
     return async (request: Request, context: object) => {
-      let response: object
+      let response: Response
 
       logger.info('[REQUEST]', JSON.stringify(request), JSON.stringify(context))
       const requestHandler: RequestHandler | undefined = this.handlers
@@ -43,7 +44,7 @@ export class SmartHomeSkillBuilder {
             header: {
               namespace: Interface.ALEXA,
               name: HeaderName.ERROR_RESPONSE,
-              payloadVersion,
+              payloadVersion: API_VERSION,
               messageId: uuid4(),
               correlationToken: uuid4()
             },

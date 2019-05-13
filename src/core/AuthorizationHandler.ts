@@ -1,9 +1,9 @@
 import * as uuid4 from 'uuid/v4'
 import { HeaderName } from '../model/HeaderName'
-import Response = Alexa.AuthorizationAcceptGrant.Response
 import { Interface } from '../model/Interface'
 import { RequestHandler } from './RequestHandler'
-import Request = Alexa.Request
+import Request = Alexa.API.Request
+import Response = Alexa.API.Response
 
 export class AuthorizationHandler implements RequestHandler {
   public handle(request: Request): Response {

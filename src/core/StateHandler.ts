@@ -1,13 +1,14 @@
 import { AxiosResponse } from 'axios'
 import * as uuid4 from 'uuid/v4'
-import Endpoint = Alexa.Endpoint
 import { MiddlewareService } from '../middleware/MiddlewareService'
 import { HeaderName } from '../model/HeaderName'
 import { Interface } from '../model/Interface'
-import Response = Alexa.StateReport.Response
-import PropertiesItem = Alexa.StateReport.PropertiesItem
-import Request = Alexa.Request
+import { API_VERSION } from './Constants'
 import { RequestHandler } from './RequestHandler'
+import Request = Alexa.API.Request
+import Response = Alexa.API.Response
+import PropertiesItem = Alexa.API.PropertiesItem
+import Endpoint = Alexa.API.Endpoint
 
 export class StateHandler implements RequestHandler {
   constructor(private readonly middleware?: MiddlewareService) {}
@@ -30,7 +31,7 @@ export class StateHandler implements RequestHandler {
         header: {
           namespace: Interface.ALEXA,
           name: HeaderName.STATE_REPORT,
-          payloadVersion: header.payloadVersion,
+          payloadVersion: API_VERSION,
           messageId: uuid4(),
           correlationToken: header.correlationToken
         },

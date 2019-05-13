@@ -1,12 +1,12 @@
 import { AxiosResponse } from 'axios'
 import * as uuid4 from 'uuid/v4'
 import { MiddlewareService } from '../middleware/MiddlewareService'
-import Request = Alexa.Request
 import { HeaderName } from '../model/HeaderName'
 import { Interface } from '../model/Interface'
-import Response = Alexa.Discovery.Response
-import EndpointsItem = Alexa.Discovery.EndpointsItem
 import { RequestHandler } from './RequestHandler'
+import Request = Alexa.API.Request
+import Response = Alexa.API.Response
+import EndpointsItem = Alexa.API.EndpointsItem
 
 export class DiscoveryHandler implements RequestHandler {
   constructor(private readonly middleware?: MiddlewareService) {}

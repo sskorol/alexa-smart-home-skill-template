@@ -1,14 +1,14 @@
-import Request = Alexa.Request
-import Endpoint = Alexa.Endpoint
 import { AxiosResponse } from 'axios'
 import * as uuid4 from 'uuid/v4'
 import { MiddlewareService } from '../middleware/MiddlewareService'
-import Response = Alexa.GenericController.Response
-import PropertiesItem = Alexa.REST.PropertiesItem
 import { HeaderName } from '../model/HeaderName'
 import { Interface } from '../model/Interface'
-import { payloadVersion } from './Constants'
+import { API_VERSION } from './Constants'
 import { RequestHandler } from './RequestHandler'
+import Request = Alexa.API.Request
+import Response = Alexa.API.Response
+import Endpoint = Alexa.API.Endpoint
+import PropertiesItem = Alexa.API.PropertiesItem
 
 export class PowerHandler implements RequestHandler {
   constructor(private readonly middleware?: MiddlewareService) {}
@@ -21,8 +21,9 @@ export class PowerHandler implements RequestHandler {
     const properties: PropertiesItem[] = []
 
     if (this.middleware) {
-      await this.middleware.sendMessage(device.endpointId, [{ command: name, state }])
-      const discoveryResponse: AxiosResponse<PropertiesItem[]> = await this.middleware.reportState(device.endpointId)
+      const discoveryResponse: AxiosResponse<PropertiesItem[]> = await this.middleware.sendMessage(device.endpointId, [
+        { command: name, state }
+      ])
       properties.push(...discoveryResponse.data)
     }
 
@@ -34,7 +35,7 @@ export class PowerHandler implements RequestHandler {
         header: {
           namespace: Interface.ALEXA,
           name: HeaderName.RESPONSE,
-          payloadVersion,
+          payloadVersion: API_VERSION,
           messageId: uuid4(),
           correlationToken
         },

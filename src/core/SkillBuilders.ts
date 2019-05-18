@@ -8,30 +8,30 @@ import { API_VERSION } from './Constants'
 import { RequestHandler } from './RequestHandler'
 import Request = Alexa.API.Request
 import Response = Alexa.API.Response
+import Context = Alexa.API.Context
 
-const logger: Logger = createLogger('SmartHomeSkillBuilder')
+const logger: Logger = createLogger('SkillBuilders')
 
-export class SmartHomeSkillBuilder {
-  public static with(middleware?: MiddlewareService): SmartHomeSkillBuilder {
-    return new SmartHomeSkillBuilder(middleware)
+export class SkillBuilders {
+  public static smartHome(middleware?: MiddlewareService): SkillBuilders {
+    return new SkillBuilders(middleware)
   }
 
   private readonly handlers: Array<new (middleware?: MiddlewareService) => RequestHandler> = []
 
   constructor(private readonly middleware?: MiddlewareService) {}
 
-  public withRequestHandlers<T extends RequestHandler>(
-    ...handlers: Array<new () => RequestHandler>
-  ): SmartHomeSkillBuilder {
+  public addRequestHandlers<T extends RequestHandler>(...handlers: Array<new () => RequestHandler>): SkillBuilders {
     this.handlers.push(...handlers)
     return this
   }
 
-  public buildLambdaResponse(): (request: Request, context: object) => Promise<Response> {
-    return async (request: Request, context: object) => {
+  public lambda(): (request: Request, context: Context) => Promise<Response> {
+    return async (request: Request, context: Context) => {
       let response: Response
 
       logger.info('[REQUEST]', JSON.stringify(request), JSON.stringify(context))
+
       const requestHandler: RequestHandler | undefined = this.handlers
         .map(Handler => new Handler(this.middleware))
         .find(handler => handler.canHandle(request))

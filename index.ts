@@ -3,13 +3,13 @@ import { BrightnessHandler } from './src/core/BrightnessHandler'
 import { ChannelHandler } from './src/core/ChannelHandler'
 import { DiscoveryHandler } from './src/core/DiscoveryHandler'
 import { PowerHandler } from './src/core/PowerHandler'
-import { SmartHomeSkillBuilder } from './src/core/SmartHomeSkillBuilder'
+import { SkillBuilders } from './src/core/SkillBuilders'
 import { SpeakerHandler } from './src/core/SpeakerHandler'
 import { StateHandler } from './src/core/StateHandler'
 import { Middleware } from './src/middleware/Middleware'
 
-exports.handler = SmartHomeSkillBuilder.with(new Middleware())
-  .withRequestHandlers(
+exports.handler = SkillBuilders.smartHome(new Middleware())
+  .addRequestHandlers(
     AuthorizationHandler,
     PowerHandler,
     BrightnessHandler,
@@ -18,4 +18,4 @@ exports.handler = SmartHomeSkillBuilder.with(new Middleware())
     DiscoveryHandler,
     StateHandler
   )
-  .buildLambdaResponse()
+  .lambda()

@@ -1,7 +1,7 @@
 {
-  "name": "alexa-smart-home-sdk",
+  "name": "alexa-smart-home-skill-template",
   "version": "0.0.1",
-  "description": "Alexa Smart Home SDK",
+  "description": "Alexa Smart Home Skill Template",
   "main": "index.js",
   "scripts": {
     "generateInterfaces": "json2ts ./schema/alexa_smart_home_message_schema.json > typings/AlexaSmartHomeAPI.ts --style.singleQuote --no-style.semi",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sskorol/alexa-smart-home-sdk.git"
+    "url": "git+https://github.com/sskorol/alexa-smart-home-skill-template.git"
   },
   "keywords": [
     "alexa",
@@ -22,9 +22,9 @@
   "author": "Sergey Korol",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/sskorol/alexa-smart-home-sdk/issues"
+    "url": "https://github.com/sskorol/alexa-smart-home-skill-template/issues"
   },
-  "homepage": "https://github.com/sskorol/alexa-smart-home-sdk#readme",
+  "homepage": "https://github.com/sskorol/alexa-smart-home-skill-template#readme",
   "devDependencies": {
     "json-schema-to-typescript": "^6.1.3",
     "json-ts": "^1.6.4",

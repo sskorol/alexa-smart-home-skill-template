@@ -74,6 +74,17 @@ To set everything up, install the required dependencies first:
 npm install
 ```
 
+Create a **.env** file in the root of the project with the following content:
+
+```dotenv
+HOST=
+PORT=
+TIMEZONE=Europe/Kiev
+API_VERSION=3
+```
+
+**HOST** / **PORT** refers to your Middleware service address. Note that you have to provide these environment variables on AWS Lambda as well.
+
 There're several useful scripts for getting latest schema and generating typings:
 
 ```bash

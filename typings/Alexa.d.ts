@@ -118,6 +118,14 @@ declare namespace Alexa.API {
     timestamp: string
   }
 
+  export interface ThermostatRequestPayload {
+    targetSetpoint?: Value
+    lowerSetpoint?: Value
+    upperSetpoint?: Value
+    targetSetpointDelta?: Value
+    thermostatMode?: Value
+  }
+
   export interface Cause {
     type: string
   }

@@ -15,5 +15,9 @@ export enum HeaderName {
   RESPONSE = 'Response',
   ACCEPT_GRANT = 'AcceptGrant',
   ACCEPT_GRANT_RESPONSE = 'AcceptGrant.Response',
-  ERROR_RESPONSE = 'ErrorResponse'
+  ERROR_RESPONSE = 'ErrorResponse',
+  SET_TARGET_TEMPERATURE = 'SetTargetTemperature',
+  ADJUST_TARGET_TEMPERATURE = 'AdjustTargetTemperature',
+  SET_THERMOSTAT_MODE = 'SetThermostatMode',
+  RESUME_SCHEDULE = 'ResumeSchedule'
 }

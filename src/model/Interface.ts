@@ -7,5 +7,6 @@ export enum Interface {
   BRIGHTNESS = 'Alexa.BrightnessController',
   CHANNEL = 'Alexa.ChannelController',
   SPEAKER = 'Alexa.Speaker',
-  INPUT = 'Alexa.InputController'
+  INPUT = 'Alexa.InputController',
+  THERMOSTAT = 'Alexa.ThermostatController'
 }

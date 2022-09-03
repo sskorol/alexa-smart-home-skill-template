@@ -41,6 +41,6 @@
     "axios": "^0.21.2",
     "dotenv": "^7.0.0",
     "moment": "^2.29.4",
-    "moment-timezone": "^0.5.25"
+    "moment-timezone": "^0.5.35"
   }
 }
